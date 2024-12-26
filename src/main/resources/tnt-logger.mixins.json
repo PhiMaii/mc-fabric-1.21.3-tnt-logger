@@ -3,7 +3,8 @@
 	"package": "net.phimai.tntlogger.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"ExplosionMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
