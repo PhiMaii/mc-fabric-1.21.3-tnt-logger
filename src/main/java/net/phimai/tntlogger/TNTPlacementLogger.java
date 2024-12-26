@@ -12,7 +12,7 @@ public class TNTPlacementLogger {
         UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
             if (!world.isClient() && player.getStackInHand(hand).getItem() == Items.TNT) {
                 if (TNTLoggerState.isLoggingEnabled) {
-                    String message = String.format("TNT placed by %s at %s",
+                    String message = String.format("%s placed a TNT at %s",
                             player.getName().getString(),
                             hitResult.getBlockPos().toShortString());
 
