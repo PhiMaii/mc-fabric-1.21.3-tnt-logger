@@ -1,21 +1,16 @@
 package net.phimai.tntlogger.mixin;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
 import net.minecraft.world.explosion.ExplosionImpl;
 import net.phimai.tntlogger.LogUtils;
-import net.phimai.tntlogger.TNTLogger;
 import net.phimai.tntlogger.TNTLoggerState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import net.minecraft.entity.player.PlayerEntity;
 
 import java.util.Objects;
 
@@ -25,7 +20,7 @@ public class ExplosionMixin {
     private void init(CallbackInfo info) {
 //        TNTLogger.LOGGER.info("EXPLOSION MIXIN CALLED!");
 
-        Explosion explosion = (Explosion) (Object) this;
+        Explosion explosion = (Explosion) this;
         Entity causingEntity = explosion.getCausingEntity();
         World world = explosion.getWorld();
 
@@ -38,24 +33,12 @@ public class ExplosionMixin {
                     int explosionY = (int) Math.floor(explosion.getPosition().getY());
                     int explosionZ = (int) Math.floor(explosion.getPosition().getZ());
 
-                    String blockCoords = String.format("%s, %s, %s", explosionX, explosionY, explosionZ);
+                    String blockCords = String.format("%s, %s, %s", explosionX, explosionY, explosionZ);
 
-//                    String message = String.format("§e%s caused an explosion at {%s, %s, %s} in dimension %s",
-//                            causingEntity.getName().getString(), explosionX, explosionY, explosionZ, world.getRegistryKey().getValue());
-
-//                    LogUtils.logToFile(message, "explosion");
-
-                    LogUtils.logToFile(causingEntity.getName().getString(), blockCoords, world.getRegistryKey().getValue().toString().split(":")[1], false);
+                    LogUtils.logToFile(causingEntity.getName().getString(), blockCords, world.getRegistryKey().getValue().toString().split(":")[1], false);
 
                     if (TNTLoggerState.isChatOutputEnabled) {
-//                        if (!world.isClient) {
-//                            world.getPlayers().forEach(opPlayer -> {
-//                                if (opPlayer.hasPermissionLevel(4)) {
-//                                    opPlayer.sendMessage(Text.of(message), false);
-//                                }
-//                            });
-//                        }
-                        LogUtils.logToChat(causingEntity.getName().getString(), blockCoords, world.getRegistryKey().getValue().toString().split(":")[1], false);
+                        LogUtils.logToChat(causingEntity.getName().getString(), blockCords, world.getRegistryKey().getValue().toString().split(":")[1], false);
                     }
                 }
 
