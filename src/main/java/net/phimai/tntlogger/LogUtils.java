@@ -89,17 +89,7 @@ public class LogUtils {
             }
 
             java.nio.file.Path logFilePath = Paths.get(LOGS_FOLDER, logFileName);
-            String eventTypePrefix;
-            if (isPlacement) {
-                eventTypePrefix = PLACEMENT_PREFIX;
-            } else {
-                eventTypePrefix = EXPLOSION_PREFIX;
-            }
 
-            // Add timestamp to the message
-//            String logMessage = String.format("[%s] [%s] %s", timestamp, eventTypePrefix, message);
-
-            // Write the message to the file
             try (FileWriter writer = new FileWriter(logFilePath.toFile(), true)) {
                 writer.write(message + System.lineSeparator());
             } catch (IOException e) {

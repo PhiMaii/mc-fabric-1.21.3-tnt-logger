@@ -31,7 +31,7 @@ public class TNTLogger implements ModInitializer {
         LOGGER.info(MOD_PREFIX + "===================================");
         LOGGER.info(MOD_PREFIX + "===== STARTING TNT-Logger MOD =====");
         LOGGER.info(MOD_PREFIX + "=====  Developed by: @PhiMai  =====");
-        LOGGER.info(MOD_PREFIX + "=====      Version 0.0.1      =====");
+        LOGGER.info(MOD_PREFIX + "=====      Version 1.0.0      =====");
         LOGGER.info(MOD_PREFIX + "===================================");
 
 
