@@ -28,13 +28,13 @@ public class LogUtils {
         String message;
         String timestamp = LocalDateTime.now().format(TIMESTAMP_FORMATTER);
         if (isPlacement) {
-            message = String.format("§7[%s] [%s] §e%s §7placed a TNT at §9%s",
+            message = String.format("§7[%s] §6[%s] §e%s §7placed a TNT at §9%s",
                     timestamp,
                     PLACEMENT_PREFIX,
                     player,
                     coordinates);
         } else {
-            message = String.format("§7[%s] [%s] §e%s §7caused an explosion at §9%s",
+            message = String.format("§7[%s] §4[%s] §e%s §7caused an explosion at §9%s",
                     timestamp,
                     EXPLOSION_PREFIX,
                     player,
