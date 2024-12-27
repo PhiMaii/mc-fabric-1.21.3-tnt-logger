@@ -7,8 +7,11 @@ import net.minecraft.text.Text;
 
 public class TNTLoggerCommands {
     public static void registerCommands() {
+
+        // Event for registering admin commands
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
-            // Command to toggle logging
+
+            //Command to toggle logging
             dispatcher.register(CommandManager.literal("toggleLogging")
                     .requires(source -> source.hasPermissionLevel(4)) // Only ops can execute
                     .then(CommandManager.argument("enabled", BoolArgumentType.bool())
@@ -16,7 +19,7 @@ public class TNTLoggerCommands {
                                 boolean enabled = BoolArgumentType.getBool(context, "enabled");
                                 TNTLoggerState.isLoggingEnabled = enabled;
 
-                                context.getSource().sendFeedback(() -> Text.of("TNT Logging is now " + (enabled ? "enabled" : "disabled")), true);
+                                context.getSource().sendFeedback(() -> Text.of("TNT Logging is now §l" + (enabled ? "§aenabled" : "§cdisabled")), true);
                                 return 1;
                             })
                     )
@@ -30,7 +33,7 @@ public class TNTLoggerCommands {
                                 boolean enabled = BoolArgumentType.getBool(context, "enabled");
                                 TNTLoggerState.isChatOutputEnabled = enabled;
 
-                                context.getSource().sendFeedback(() -> Text.of("TNT Logging is now " + (enabled ? "enabled" : "disabled")), true);
+                                context.getSource().sendFeedback(() -> Text.of("TNT Logging is now §l" + (enabled ? "§aenabled" : "§cdisabled")), true);
                                 return 1;
                             })
                     )
