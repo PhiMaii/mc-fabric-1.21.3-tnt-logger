@@ -10,22 +10,27 @@ import net.minecraft.util.ActionResult;
 public class TNTPlacementLogger {
     public static void register() {
         UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
+
             if (!world.isClient() && player.getStackInHand(hand).getItem() == Items.TNT) {
                 if (TNTLoggerState.isLoggingEnabled) {
-                    String message = String.format("%s placed a TNT at %s",
-                            player.getName().getString(),
-                            hitResult.getBlockPos().toShortString());
+//                    String message = String.format("%s placed a TNT at %s",
+//                            player.getName().getString(),
+//                            hitResult.getBlockPos().toShortString());
 
                     // Log the message to file
-                    LogUtils.logToFile(message, "placement");
+//                    LogUtils.logToFile(message, "placement");
 
-                    // Send message to OPs in chat if enabled
+                    LogUtils.logToFile(player.getName().getString(), hitResult.getBlockPos().toShortString(), world.getRegistryKey().getValue().toString().split(":")[1], true);
+
+
                     if (TNTLoggerState.isChatOutputEnabled) {
-                        world.getPlayers().forEach(opPlayer -> {
-                            if (opPlayer.hasPermissionLevel(4)) {
-                                opPlayer.sendMessage(Text.of(message), false);
-                            }
-                        });
+                        LogUtils.logToChat(player.getName().getString(), hitResult.getBlockPos().toShortString(), world.getRegistryKey().getValue().toString().split(":")[1], true);
+
+//                        world.getPlayers().forEach(opPlayer -> {
+//                            if (opPlayer.hasPermissionLevel(4)) {
+//                                opPlayer.sendMessage(Text.of(message), false);
+//                            }
+//                        });
                     }
                 }
             }

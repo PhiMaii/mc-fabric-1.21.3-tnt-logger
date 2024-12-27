@@ -38,19 +38,24 @@ public class ExplosionMixin {
                     int explosionY = (int) Math.floor(explosion.getPosition().getY());
                     int explosionZ = (int) Math.floor(explosion.getPosition().getZ());
 
-                    String message = String.format("%s caused an explosion at {%s, %s, %s} in dimension %s",
-                            causingEntity.getName().getString(), explosionX, explosionY, explosionZ, world.getRegistryKey().getValue());
+                    String blockCoords = String.format("%s, %s, %s", explosionX, explosionY, explosionZ);
 
-                    LogUtils.logToFile(message, "explosion");
+//                    String message = String.format("§e%s caused an explosion at {%s, %s, %s} in dimension %s",
+//                            causingEntity.getName().getString(), explosionX, explosionY, explosionZ, world.getRegistryKey().getValue());
+
+//                    LogUtils.logToFile(message, "explosion");
+
+                    LogUtils.logToFile(causingEntity.getName().getString(), blockCoords, world.getRegistryKey().getValue().toString().split(":")[1], false);
 
                     if (TNTLoggerState.isChatOutputEnabled) {
-                        if (!world.isClient) {
-                            world.getPlayers().forEach(opPlayer -> {
-                                if (opPlayer.hasPermissionLevel(4)) {
-                                    opPlayer.sendMessage(Text.of(message), false);
-                                }
-                            });
-                        }
+//                        if (!world.isClient) {
+//                            world.getPlayers().forEach(opPlayer -> {
+//                                if (opPlayer.hasPermissionLevel(4)) {
+//                                    opPlayer.sendMessage(Text.of(message), false);
+//                                }
+//                            });
+//                        }
+                        LogUtils.logToChat(causingEntity.getName().getString(), blockCoords, world.getRegistryKey().getValue().toString().split(":")[1], false);
                     }
                 }
 
