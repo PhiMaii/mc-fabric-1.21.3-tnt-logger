@@ -33,7 +33,7 @@ public class TNTLoggerCommands {
                                 boolean enabled = BoolArgumentType.getBool(context, "enabled");
                                 TNTLoggerState.isChatOutputEnabled = enabled;
 
-                                context.getSource().sendFeedback(() -> Text.of("TNT Logging is now §l" + (enabled ? "§aenabled" : "§cdisabled")), true);
+                                context.getSource().sendFeedback(() -> Text.of("TNT Logging chat output is now §l" + (enabled ? "§aenabled" : "§cdisabled")), true);
                                 return 1;
                             })
                     )

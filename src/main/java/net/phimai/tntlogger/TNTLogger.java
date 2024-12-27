@@ -28,9 +28,12 @@ public class TNTLogger implements ModInitializer {
     public void onInitialize() {
 
         // Log that initialisation has begun
+        LOGGER.info(MOD_PREFIX + "===================================");
         LOGGER.info(MOD_PREFIX + "===== STARTING TNT-Logger MOD =====");
         LOGGER.info(MOD_PREFIX + "=====  Developed by: @PhiMai  =====");
         LOGGER.info(MOD_PREFIX + "=====      Version 0.0.1      =====");
+        LOGGER.info(MOD_PREFIX + "===================================");
+
 
 
         try {
@@ -44,10 +47,10 @@ public class TNTLogger implements ModInitializer {
 
             // Catch any errors and log them
         } catch (Exception e) {
-            LOGGER.error("===== ERROR while initializing TNT-Logger =====");
+            LOGGER.error(MOD_PREFIX + "=====  ERROR during startup  =====");
         }
 
         // If everything worked, print it in the console
-        LOGGER.info(MOD_PREFIX + "===== TNT Logger Mod initialized =====");
+        LOGGER.info(MOD_PREFIX + "=====     Mod INITIALIZED     =====");
     }
 }
